@@ -14,7 +14,7 @@ pipeline{
         stage("Check dockerfile update"){
             steps{
                 script{
-                    def CHANGE = sh(script: "git diff ${SCM_VARS.GIT_PREVIOUS_SUCCESSFUL_COMMIT} ${SCM_VARS.GIT_COMMIT} main.py", returnStdout: true)
+                    def CHANGE = sh(script: "git diff ${GIT_PREVIOUS_SUCCESSFUL_COMMIT} ${GIT_COMMIT} main.py", returnStdout: true)
                     if (CHANGE.length() > 0){
                         withCredentials([[$class: 'UsernamePasswordMultiBinding',
                         credentialsId: 'docker-hub', 
