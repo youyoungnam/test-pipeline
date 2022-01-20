@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  serverapp:
+    build: .
+    container_name: predict_server
+    volumes:
+      - .:/code
+    ports:
+      - "80:80"
